@@ -13,6 +13,7 @@ FLOPPY:=/mnt/floppy/
 .PHONY : everything
 
 everything : $(BOOT_BIN) $(LDR_BIN)
+	tar zxvf a.img.gz 
 	dd if=$(BOOT_BIN) of=$(IMG) bs=512 count=1 conv=notrunc
 	sudo mount -o loop $(IMG) $(FLOPPY)
 	sudo cp $(LDR_BIN) $(FLOPPY) -v
